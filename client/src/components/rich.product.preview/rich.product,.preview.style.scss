@@ -1,0 +1,35 @@
+@import "../../assets/styles/config";
+
+.RichProductPreview {
+  width: 90%;
+  height: 40rem;
+  margin: 2rem auto;
+
+  @include mediaLg {
+    height: 60rem;
+  }
+
+  @include mediaSm {
+    height: 90rem;
+  }
+
+  & h1.RichProductPreviewHeader {
+    color: $primary_purple;
+    font-weight: 600;
+    font-size: 2rem;
+    border-bottom: $base_border;
+    margin: 1rem 0;
+  }
+
+  .ProductPreview {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    margin: 0 auto;
+
+    flex-flow: row nowrap;
+    @include mediaLg {
+      flex-flow: column nowrap;
+    }
+  }
+}

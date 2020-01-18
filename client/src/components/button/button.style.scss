@@ -1,0 +1,16 @@
+@import "../../assets/styles/config";
+
+.Button {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: $primary_purple;
+  border: solid 1px black;
+  color: white;
+  @include easeOut;
+  &:hover {
+    cursor: pointer;
+    background: $secondary_purple;
+    border: solid 1px white;
+    border-radius: 10px;
+  }
+}

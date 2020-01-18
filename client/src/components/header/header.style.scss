@@ -1,0 +1,99 @@
+@import "../../assets/styles/config";
+
+.HeaderContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 15vh;
+  width: 100%;
+  background: $primary_background;
+
+  .HeaderLogoContainer {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    border-bottom: $primary_purple solid 2px;
+
+    .Logo {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .HeaderNav {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 5vh;
+    justify-content: space-between;
+    border-bottom: $primary_purple solid 2px;
+
+    .HeaderNavLink,
+    .HeaderNavSocial {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+    }
+
+    .HeaderNavLink {
+      @include mediaMd {
+        display: none;
+      }
+    }
+
+    .HeaderNavLinkDropdown {
+      margin: 0;
+      position: absolute;
+      right: 0;
+      top: 15vh;
+      width: 8rem;
+      height: 17rem;
+      display: none;
+      flex-flow: column nowrap;
+      background: $primary_background;
+      border-bottom: solid 3px $primary_purple;
+      justify-content: center;
+      align-items: center;
+      z-index: 3;
+
+      @include mediaMd {
+        display: flex;
+      }
+    }
+  }
+
+  .links,
+  .Links {
+    padding: 0.5rem;
+  }
+
+  .Link {
+    color: $primary_text_color;
+    &:hover {
+      color: $primary_purple;
+    }
+  }
+
+  .HeaderNavSocial {
+    padding-right: 3rem;
+  }
+  .ActiveLink {
+    color: $primary_purple;
+  }
+}
+
+.Drop {
+  animation-name: drop;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in;
+}
+@keyframes drop {
+  0% {
+    height: 0;
+    opacity: 0;
+    width: 0;
+  }
+  100% {
+    height: 17rem;
+    opacity: 1;
+    width: 8;
+  }
+}

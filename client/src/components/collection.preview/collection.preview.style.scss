@@ -1,0 +1,52 @@
+@import "../../assets/styles/config";
+
+.CollectionPreview {
+  height: 25rem;
+  width: 90%;
+  margin: 2rem auto;
+  background: primary_background;
+  @include mediaMd {
+    height: 40rem;
+  }
+
+  .CollectionPreviewCategory {
+    width: 100%;
+    border-bottom: solid 2px $primary_purple;
+    color: $primary_purple;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+
+    .Category {
+      font-size: 2rem;
+      font-weight: 600;
+
+      @include mediaMd {
+        font-size: 1.8rem;
+      }
+    }
+    .Arrival {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+  }
+
+  .CollectionPreviewItems {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 20%);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 6%;
+
+    @include mediaMd {
+      grid-template-columns: repeat(2, 40%);
+      grid-template-rows: repeat(2, 1fr);
+    }
+    @include mediaSm {
+      grid-template-columns: repeat(2, 50%);
+      grid-template-rows: repeat(2, 1fr);
+      grid-gap: 1%;
+    }
+  }
+}

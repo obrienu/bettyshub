@@ -1,0 +1,60 @@
+@import "../../assets/styles/config";
+
+.homePageCarousel {
+  background-color: $primary_background;
+}
+
+.CarouselTop {
+  height: 70vh;
+  width: 100;
+  background-image: url("../../assets/img/carousel/bg_low.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  .CarouselTopText {
+    height: 10rem;
+    width: 40%;
+    padding: 1rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.363);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    @include mediaMd {
+      height: 17rem;
+      width: 60%;
+    }
+
+    .CarouselHeaderText {
+      font-weight: 600;
+      font-size: 3rem;
+    }
+
+    .CarouselBodyText {
+      font-size: 1rem;
+    }
+  }
+}
+
+.HomePageCarouselThumbnails {
+  width: 90%;
+  margin: -4rem auto 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  @include mediaMd {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
