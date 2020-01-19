@@ -15,7 +15,7 @@ const CollectionItem = ({ price, name, img }) => {
           <span className="CollectionItemFooterPrice"> # {price}</span>
           <span className="CollectionItemFooterFavourite">
             {" "}
-            <i class="far fa-heart"></i>
+            <i className="far fa-heart"></i>
           </span>
         </div>
       </div>

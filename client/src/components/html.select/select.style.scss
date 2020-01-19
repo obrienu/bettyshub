@@ -1,0 +1,19 @@
+@import "../../assets/styles/config";
+
+.SelectInputLabel {
+  color: $primary_text_color;
+  font-size: 0.8rem;
+  margin-left: 1rem;
+}
+
+.SelectInput {
+  width: 9rem;
+  height: 1.5rem;
+  color: $primary_text_color;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  background: $primary_background;
+  &:focus {
+    outline: none;
+  }
+}

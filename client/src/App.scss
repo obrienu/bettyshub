@@ -1,3 +1,5 @@
+@import "./assets/styles/config";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -23,5 +25,13 @@ a {
   }
   &.hover {
     cursor: pointer;
+  }
+}
+
+.Main {
+  min-height: calc(100vh - 15rem - 15vh);
+
+  @include mediaMd {
+    min-height: calc(100vh - 20rem - 15vh);
   }
 }

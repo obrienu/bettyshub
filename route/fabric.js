@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const fabricController = require("../controller/fabrics.controller");
+const multer = require("../middleware/multer");
 
 router.get("/", fabricController.getFabric);
 router.get("/", fabricController.getOneFabric);
-router.post("/", fabricController.postFabric);
+router.post("/", multer, fabricController.postFabric);
 
 module.exports = router;

@@ -5,8 +5,7 @@ const fabricSchema = mongoose.Schema({
   description: { type: String, required: true },
   price: { type: String, required: true },
   category: { type: String, required: true },
-  thumbnailUrl: { type: String, required: true },
-  imageUrl: { type: String, required: true },
+  imageUrl: { type: Array, required: true },
   createdAt: { type: Date, default: Date.now }
 });
 

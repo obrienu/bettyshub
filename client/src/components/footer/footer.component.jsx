@@ -64,7 +64,7 @@ const Footer = () => {
           </li>
           <li className="FooterAddresses">
             <span className="FooterIcon">
-              <i class="fas fa-mobile-alt"></i>
+              <i className="fas fa-mobile-alt"></i>
             </span>
             <span className="FooterAddress">08065288667</span>
           </li>

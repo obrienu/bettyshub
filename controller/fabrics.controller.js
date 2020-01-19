@@ -1,4 +1,6 @@
 const Fabric = require("../model/fabrics.schema");
+const upload = require("../middleware/multer");
+const multer = require("multer");
 
 exports.getFabric = async (req, res) => {
   const offset = req.body.offset || 0;
@@ -21,9 +23,17 @@ exports.getOneFabric = (req, res) => {
     .catch(err => res.status(400).json({ msg: "Error Fetching Fabric" }));
 };
 
-exports.postFabric = (req, res) => {
+exports.postFabric = (req, res, next) => {
   const { name, description, price, category } = req.body;
-  const fabric = new Fabric({ name, description, price, category });
+  const url = req.protocol + "://" + req.get("host");
+  const fabric = new Fabric({
+    name,
+    description,
+    price,
+    category,
+    imageUrl: req.files.map(file => url + "/images/" + file.filename)
+  });
+
   fabric
     .save()
     .then(fabrics => res.json(fabrics))

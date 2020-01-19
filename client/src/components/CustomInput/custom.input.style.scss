@@ -1,0 +1,46 @@
+@import "../../assets/styles/config";
+
+.CustomInput {
+  width: 80%;
+  background-color: $primary_background;
+  position: relative;
+
+  .CustomInputInput {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    color: $primary_text_color;
+    background: $primary_background;
+    border: none;
+    display: block;
+    border-bottom: solid 1px $primary_purple;
+    height: 1.5rem;
+    padding-left: 0.5rem;
+    width: 80%;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus {
+      label.CustomInputLabel {
+        top: -11px;
+        font-size: 0.6rem;
+      }
+    }
+  }
+
+  label.CustomInputLabel {
+    font-size: 0.7rem;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 1.5rem;
+    top: 10px;
+    transition: 300ms ease all;
+
+    &.Shrink {
+      top: -11px;
+      font-size: 0.6rem;
+    }
+  }
+}
