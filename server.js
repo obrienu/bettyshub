@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-
+app.use(express.static("public"));
 let dbUrl;
 
 if (process.env.NODE_ENV === "production") {
@@ -21,6 +21,7 @@ mongoose
   .catch(error => console.log("CANNOT CONNECT TO MONGO ATLAS: ", error));
 
 app.use("/api/fabric", require("./route/fabric"));
+app.use("/api/accessories", require("./route/accessories"));
 
 const port = process.env.PORT || 5000;
 

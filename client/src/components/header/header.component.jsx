@@ -21,7 +21,7 @@ export class Header extends Component {
           </NavLink>
         </li>
         <li className="links">
-          <NavLink activeClassName="ActiveLink" className="Link" to="/Fabrics">
+          <NavLink activeClassName="ActiveLink" className="Link" to="/fabric">
             Fabrics
           </NavLink>
         </li>
@@ -29,7 +29,7 @@ export class Header extends Component {
           <NavLink
             activeClassName="ActiveLink"
             className="Link"
-            to="/Accessories"
+            to="/accessories"
           >
             Accessories
           </NavLink>
@@ -71,7 +71,7 @@ export class Header extends Component {
           </NavLink>
         </li>
         <li onClick={this.toggleMenu} className="links">
-          <NavLink activeClassName="ActiveLink" className="Link" to="/Fabrics">
+          <NavLink activeClassName="ActiveLink" className="Link" to="/fabric">
             Fabrics
           </NavLink>
         </li>
@@ -79,7 +79,7 @@ export class Header extends Component {
           <NavLink
             activeClassName="ActiveLink"
             className="Link"
-            to="/Accessories"
+            to="/accessories"
           >
             Accessories
           </NavLink>

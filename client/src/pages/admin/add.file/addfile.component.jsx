@@ -153,69 +153,68 @@ export class AddFile extends Component {
 
   render() {
     return (
-      <form
-        onSubmit={event => this.handleSubmit(event)}
-        className="AddCommodityForm"
-      >
-        <SelectInput
-          isRequired={true}
-          label="Selected Shop"
-          options={["", "fabric", "accessories"]}
-          onChange={event => this.handleChange(event)}
-          value={this.state.shop}
-          name="shop"
-        />
-        <Input
-          isRequired={true}
-          name="name"
-          onChange={event => this.handleChange(event)}
-          value={this.state.name}
-          type="text"
-        />
-        <Input
-          isRequired={true}
-          name="price"
-          onChange={event => this.handleChange(event)}
-          value={this.state.price}
-          type="text"
-        />
-        <Input
-          isRequired={true}
-          name="category"
-          onChange={event => this.handleChange(event)}
-          value={this.state.category}
-          type="text"
-        />
-        <Input
-          isRequired={true}
-          name="description"
-          onChange={event => this.handleChange(event)}
-          value={this.state.description}
-          type="textarea"
-        />
-        <Input
-          isRequired={true}
-          name="image1"
-          onChange={event => this.handlefile(event)}
-          value={this.state.image1}
-          type="file"
-        />
-        <Input
-          name="image2"
-          onChange={event => this.handlefile(event)}
-          value={this.state.image2}
-          type="file"
-        />
-        <Input
-          name="image3"
-          onChange={event => this.handlefile(event)}
-          value={this.state.image3}
-          type="file"
-        />
-        <Button type="" style={{ width: "4rem", marginLeft: "1rem" }}>
-          Submit
-        </Button>
-      </form>
+      <div className="AddCommodityForm">
+        <form onSubmit={event => this.handleSubmit(event)}>
+          <SelectInput
+            isRequired={true}
+            label="Selected Shop"
+            options={["", "fabric", "accessories"]}
+            onChange={event => this.handleChange(event)}
+            value={this.state.shop}
+            name="shop"
+          />
+          <Input
+            isRequired={true}
+            name="name"
+            onChange={event => this.handleChange(event)}
+            value={this.state.name}
+            type="text"
+          />
+          <Input
+            isRequired={true}
+            name="price"
+            onChange={event => this.handleChange(event)}
+            value={this.state.price}
+            type="number"
+          />
+          <Input
+            isRequired={true}
+            name="category"
+            onChange={event => this.handleChange(event)}
+            value={this.state.category}
+            type="text"
+          />
+          <Input
+            isRequired={true}
+            name="description"
+            onChange={event => this.handleChange(event)}
+            value={this.state.description}
+            type="textarea"
+          />
+          <Input
+            isRequired={true}
+            name="image1"
+            onChange={event => this.handlefile(event)}
+            value={this.state.image1}
+            type="file"
+          />
+          <Input
+            name="image2"
+            onChange={event => this.handlefile(event)}
+            value={this.state.image2}
+            type="file"
+          />
+          <Input
+            name="image3"
+            onChange={event => this.handlefile(event)}
+            value={this.state.image3}
+            type="file"
+          />
+          <Button type="" style={{ width: "4rem", marginLeft: "1rem" }}>
+            Submit
+          </Button>
+        </form>
+      </div>
     );
   }
 }

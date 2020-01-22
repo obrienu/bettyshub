@@ -66,9 +66,9 @@
   }
 
   .Link {
-    color: $primary_text_color;
+    color: $primary_purple;
     &:hover {
-      color: $primary_purple;
+      color: $secondary_purple;
     }
   }
 
@@ -76,7 +76,7 @@
     padding-right: 3rem;
   }
   .ActiveLink {
-    color: $primary_purple;
+    color: $secondary_purple;
   }
 }
 

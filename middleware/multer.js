@@ -20,9 +20,22 @@ const MIME_TYPES = {
   "image/png": "png"
 };
 
-const storage = multer.diskStorage({
+const storageFabric = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "./images");
+    callback(null, "./public/images/fabric/");
+  },
+  filename: (req, file, callback) => {
+    const name = file.originalname
+      .split(" ")
+      .join("_")
+      .substring(0, file.originalname.lastIndexOf("."));
+    const extension = MIME_TYPES[file.mimetype];
+    callback(null, name + Date.now() + "." + extension);
+  }
+});
+const storageAccessories = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "./public/images/accessories/");
   },
   filename: (req, file, callback) => {
     const name = file.originalname
@@ -34,8 +47,16 @@ const storage = multer.diskStorage({
   }
 });
 
-module.exports = multer({
-  storage: storage,
+exports.fabric = multer({
+  storage: storageFabric,
+  limits: { fileSize: 1000000 },
+  fileFilter: (req, file, callback) => {
+    checkFileType(file, callback);
+  }
+}).array("files");
+
+exports.accessories = multer({
+  storage: storageAccessories,
   limits: { fileSize: 1000000 },
   fileFilter: (req, file, callback) => {
     checkFileType(file, callback);

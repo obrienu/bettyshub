@@ -1,0 +1,13 @@
+@import "../../assets/styles/config";
+
+.ShopPage {
+  width: 100%;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 6fr;
+
+  @include mediaMd {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}

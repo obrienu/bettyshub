@@ -5,19 +5,19 @@ import longrich from "./img/carousel/longrich.jpg";
 const MENU_DATA = [
   {
     text: "Bettys Fabric",
-    link: "Fabrics",
+    link: "fabric",
     bg: fabric,
     color: "#9900ff"
   },
   {
     text: "Bettys Rich",
-    link: "Rich",
+    link: "rich",
     bg: longrich,
     color: "#00ffff"
   },
   {
     text: "Bettys Accessories",
-    link: "Accessories",
+    link: "accessories",
     bg: accessories,
     color: "#9900ff"
   }

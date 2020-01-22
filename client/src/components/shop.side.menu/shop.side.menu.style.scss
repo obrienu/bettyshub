@@ -1,0 +1,42 @@
+@import "../../assets/styles/config";
+
+.ShopSideMenu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  list-style: none;
+  align-self: center;
+  text-align: center;
+  padding-top: 1.5rem;
+
+  @include mediaMd {
+    flex-flow: row wrap;
+    justify-content: center;
+    border-bottom: $base_border;
+  }
+
+  .ShopMenuCategory {
+    font-size: 0.8rem;
+    color: $primary_purple;
+    cursor: pointer;
+    margin: 0.5rem 0;
+
+    @include mediaMd {
+      margin: 0 1rem;
+    }
+  }
+
+  .ShopMenuCategoryLink {
+    font-size: 0.8rem;
+    color: $primary_purple;
+    @include easeOut;
+    &:hover {
+      color: $secondary_purple;
+    }
+  }
+
+  .ActiveShopMenuCategoryLink {
+    color: $secondary_purple;
+  }
+}
