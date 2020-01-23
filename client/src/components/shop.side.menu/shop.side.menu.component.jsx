@@ -6,7 +6,7 @@ import { getFilteredItems } from "../../redux/shop/shop.actions";
 
 class ShopSideMenu extends Component {
   render() {
-    const { category, shop, getFilteredItems } = this.props;
+    const { category, shop } = this.props;
     return (
       <div className="ShopSideMenu">
         <li className="ShopMenuCategory">

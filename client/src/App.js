@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./App.scss";
 import Header from "./components/header/header.component";
 import { Route, Switch } from "react-router-dom";

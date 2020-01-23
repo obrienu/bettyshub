@@ -3,7 +3,6 @@ import "./collection.preview.style.scss";
 import Loader from "../loader/loader.component";
 
 const CollectionPreview = WrappedComponent => ({ data, name }) => {
-  console.log(data);
   return (
     <section className="CollectionPreview">
       <div className="CollectionPreviewCategory">

@@ -29,4 +29,17 @@
       grid-template-columns: repeat(2, 1fr);
     }
   }
+
+  .CollectionOverviewBottom {
+    align-items: center;
+    margin: 1rem;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    text-align: center;
+    .PaginationInfo {
+      color: $secondary_purple;
+    }
+  }
 }

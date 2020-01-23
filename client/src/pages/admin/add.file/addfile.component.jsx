@@ -96,6 +96,10 @@ export class AddFile extends Component {
             files: [...newFiles]
           });
           break;
+        default:
+          this.setState({
+            ...this.state
+          });
       }
     }
   };
