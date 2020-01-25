@@ -1,9 +1,15 @@
-import { GET_ITEMS, LOADING_ITEM, GET_CATEGORY } from "./shop.types";
+import {
+  GET_ITEMS,
+  LOADING_ITEM,
+  GET_CATEGORY,
+  GET_SHOWPAGE
+} from "./shop.types";
 
 const initialState = {
   items: {},
   loading: false,
-  category: []
+  category: [],
+  showpage: {}
 };
 
 const shopReducer = (state = initialState, action) => {
@@ -40,8 +46,14 @@ const shopReducer = (state = initialState, action) => {
     case GET_CATEGORY:
       return {
         ...state,
-        loading: true,
+        loading: false,
         category: action.payload
+      };
+    case GET_SHOWPAGE:
+      return {
+        ...state,
+        loading: false,
+        showpage: action.payload
       };
     default:
       return state;

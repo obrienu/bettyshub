@@ -3,6 +3,7 @@
 .Footer {
   height: 15rem;
   background-color: $footer_blue;
+  background-image: $footer_image;
   width: 100%;
 
   @include mediaMd {

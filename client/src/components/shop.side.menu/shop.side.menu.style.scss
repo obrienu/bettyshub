@@ -9,11 +9,13 @@
   align-self: center;
   text-align: center;
   padding-top: 1.5rem;
+  background: darken($color: $secondary_purple, $amount: 40);
 
   @include mediaMd {
     flex-flow: row wrap;
     justify-content: center;
     border-bottom: $base_border;
+    padding: 0.5rem;
   }
 
   .ShopMenuCategory {
@@ -29,7 +31,7 @@
 
   .ShopMenuCategoryLink {
     font-size: 0.8rem;
-    color: $primary_purple;
+    color: #fff;
     @include easeOut;
     &:hover {
       color: $secondary_purple;

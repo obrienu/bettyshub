@@ -9,6 +9,9 @@
   background-color: #fff;
   border: solid 1px $secondary_purple;
   box-shadow: 5px 5px 5px rgba($primary_purple, 0.5);
+  &:hover {
+    cursor: pointer;
+  }
 
   @include mediaLg {
     height: 18rem;

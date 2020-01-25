@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./shop.side.menu.style.scss";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { getFilteredItems } from "../../redux/shop/shop.actions";
 
 class ShopSideMenu extends Component {
   render() {
@@ -36,9 +35,6 @@ class ShopSideMenu extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getFilteredItems: (shop, category) =>
-    dispatch(getFilteredItems(shop, category))
-});
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(null, mapDispatchToProps)(ShopSideMenu);

@@ -1,4 +1,4 @@
-import { GET_ITEMS, LOADING_ITEM, GET_CATEGORY } from "./shop.types";
+import { GET_ITEMS, LOADING_ITEM, GET_SHOWPAGE } from "./shop.types";
 import axios from "axios";
 import { getError } from "../errors/error.actions";
 
@@ -18,7 +18,23 @@ export const getItems = shop => dispatch => {
     .catch(err => getError(err.response.data.msg, err.response.status));
 };
 
-export const getCategory = shop => dispatch => {
+export const getShowpage = (shop, id) => dispatch => {
+  dispatch({
+    type: LOADING_ITEM
+  });
+
+  axios
+    .get(`/api/${shop}/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_SHOWPAGE,
+        payload: res.data
+      })
+    )
+    .catch(err => getError(err.response.data.msg, err.response.status));
+};
+
+/* export const getCategory = shop => dispatch => {
   dispatch({
     type: LOADING_ITEM
   });
@@ -31,9 +47,9 @@ export const getCategory = shop => dispatch => {
       })
     )
     .catch(err => getError(err.response.data.msg, err.response.status));
-};
+}; */
 
-export const getFilteredItems = (shop, category) => dispatch => {
+/* export const getFilteredItems = (shop, category) => dispatch => {
   dispatch({
     type: LOADING_ITEM
   });
@@ -48,3 +64,4 @@ export const getFilteredItems = (shop, category) => dispatch => {
     )
     .catch(err => getError(err.response.data.msg, err.response.status));
 };
+ */

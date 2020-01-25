@@ -16,14 +16,20 @@ import { createStructuredSelector } from "reselect";
 const PreviewWrapper = CollectionPreview(CollectionItem);
 class HomePage extends Component {
   componentDidMount() {
-    compose(this.props.getItems("fabric"), this.props.getItems("accessories"));
+    const { accessories, fabric } = this.props;
+    if (!accessories && !fabric) {
+      compose(
+        this.props.getItems("fabric"),
+        this.props.getItems("accessories")
+      );
+    }
   }
 
   render() {
     return (
       <main className="Homepage">
         <Carousel />
-        <PreviewWrapper name="Fabrics" data={this.props.fabric} />
+        <PreviewWrapper name="Fabric" data={this.props.fabric} />
         <PreviewWrapper name="Accessories" data={this.props.accessories} />
         <RichProductPreview />
       </main>

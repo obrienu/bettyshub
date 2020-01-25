@@ -1,0 +1,78 @@
+@import "../../assets/styles/config";
+
+.ShowPage {
+  padding: 1rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mediaMd {
+    min-height: 40rem;
+  }
+
+  .ShowPageContainer {
+    background: $primary_background;
+    margin: 0 auto;
+    height: 60%;
+    min-width: 60%;
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-gap: 1rem;
+    width: 90%;
+
+    @include mediaMd {
+      grid-template-columns: auto;
+      grid-template-rows: max-content max-content;
+      height: 95%;
+      grid-gap: 0;
+      padding-left: 1rem;
+    }
+
+    .ShowPageImageContainer {
+      padding: 1rem;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: max-content max-content;
+      grid-gap: 0.5rem;
+
+      @include mediaMd {
+        height: 100%;
+      }
+    }
+
+    .ShowPageThumbnails {
+      display: flex;
+      flex-flow: column nowrap;
+    }
+
+    .ShowPageImage {
+      height: 15rem;
+      width: 12rem;
+      @include easeOut;
+      border: solid 2px $secondary-purple;
+      box-shadow: 5px 5px 5px rgba($secondary-purple, 0.5);
+    }
+
+    .ShowPageText {
+      height: 100%;
+      width: 95%;
+      padding-top: 1rem;
+
+      h3 {
+        border-bottom: $base_border;
+      }
+      .ShowPageDescription {
+        padding: 0.5rem 0;
+        border-bottom: $base_border;
+      }
+      .ShowPagePrice {
+        height: 10%;
+        text-align: right;
+        padding: 0.5rem 0;
+        font-weight: 700;
+      }
+    }
+  }
+}

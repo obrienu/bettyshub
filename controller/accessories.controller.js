@@ -2,7 +2,9 @@ const Accessories = require("../model/accessories.schema");
 
 exports.getAccessories = async (req, res) => {
   const totalItems = await Accessories.find().countDocuments();
-  Accessories.find()
+  const pipeline = [{ $sort: { createdAt: -1 } }];
+
+  Accessories.aggregate(pipeline)
     .then(accessories =>
       res.json({
         accessories,
@@ -13,7 +15,7 @@ exports.getAccessories = async (req, res) => {
 };
 
 exports.getOneAccessories = (req, res) => {
-  Accessories.findById(req.id)
+  Accessories.findById(req.params.id)
     .then(accessories => res.json(accessories))
     .catch(err => res.status(400).json({ msg: "Error Fetching Accessories" }));
 };

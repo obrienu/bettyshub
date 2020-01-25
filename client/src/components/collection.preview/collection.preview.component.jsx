@@ -14,7 +14,11 @@ const CollectionPreview = WrappedComponent => ({ data, name }) => {
           {data
             .filter((items, index) => index < 4)
             .map(item => (
-              <WrappedComponent key={item._id} {...item} />
+              <WrappedComponent
+                key={item._id}
+                shop={name.toLowerCase()}
+                item={item}
+              />
             ))}
         </div>
       ) : (

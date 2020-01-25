@@ -5,6 +5,7 @@
   width: 200px;
   border: solid black 2px;
   overflow: hidden;
+  z-index: 3;
 
   @include mediaMd {
     width: 100%;
@@ -12,6 +13,7 @@
   }
 
   .ThumbnailText {
+    color: #fff;
     height: 20%;
     width: 100%;
     border-bottom: solid black 1px;

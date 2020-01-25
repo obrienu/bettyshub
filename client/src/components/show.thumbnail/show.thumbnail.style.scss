@@ -1,0 +1,16 @@
+@import "../../assets/styles/config";
+
+.ShowThumbnail {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid $secondary_purple;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .ShowThumbnailImage {
+    width: 3rem;
+    height: 3rem;
+  }
+}

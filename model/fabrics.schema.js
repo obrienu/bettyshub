@@ -9,4 +9,20 @@ const fabricSchema = mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
+fabricSchema.pre("save", function(next) {
+  this.category = this.category.toLowerCase();
+  const upper = str => {
+    return str
+      .split(" ")
+      .map(a => {
+        return a[0].toUpperCase() + a.substring(1);
+      })
+      .join(" ");
+  };
+  this.name = upper(this.name);
+  this.description =
+    this.description.substring(0).toUpperCase() + this.description.substring(1);
+  next();
+});
+
 module.exports = mongoose.model("Fabric", fabricSchema);

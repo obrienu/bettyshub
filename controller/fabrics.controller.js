@@ -14,7 +14,7 @@ exports.getFabric = async (req, res) => {
 };
 
 exports.getOneFabric = (req, res) => {
-  Fabric.findById(req.id)
+  Fabric.findById(req.params.id)
     .then(fabric => res.json(fabric))
     .catch(err => res.status(400).json({ msg: "Error Fetching Fabric" }));
 };

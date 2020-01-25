@@ -6,7 +6,7 @@ const multer = require("../middleware/multer");
 router.get("/", fabricController.getFabric);
 router.get("/category", fabricController.getCategoryList);
 router.get("/category/:category", fabricController.getCategory);
-router.get("/", fabricController.getOneFabric);
+router.get("/:id", fabricController.getOneFabric);
 router.post("/", multer.fabric, fabricController.postFabric);
 
 module.exports = router;

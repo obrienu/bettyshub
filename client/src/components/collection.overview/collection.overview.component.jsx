@@ -77,7 +77,7 @@ class CollectionOverview extends Component {
         <h1 className="CollectionOverviewHeader">{header}</h1>
         <div className="CollectionOverviewTop">
           {this.state.item.map(item => (
-            <CollectionItem key={item._id} {...item} />
+            <CollectionItem key={item._id} shop={shop} item={item} />
           ))}
         </div>
         <div className="CollectionOverviewBottom">

@@ -1,9 +1,16 @@
 import React from "react";
 import "./collection.item.style.scss";
+import { withRouter } from "react-router-dom";
 
-const CollectionItem = ({ price, name, imageUrl }) => {
+const CollectionItem = ({ item, shop, history, getShowpage }) => {
+  const { price, name, imageUrl, _id } = item;
   return (
-    <div className="CollectionItem">
+    <div
+      onClick={() => {
+        history.push(`/show/${shop}/${_id}`);
+      }}
+      className="CollectionItem"
+    >
       <span className="CollectionItemFooterSale">Sale</span>
       <div
         style={{ backgroundImage: `url(${imageUrl[0]})` }}
@@ -23,4 +30,4 @@ const CollectionItem = ({ price, name, imageUrl }) => {
   );
 };
 
-export default CollectionItem;
+export default withRouter(CollectionItem);

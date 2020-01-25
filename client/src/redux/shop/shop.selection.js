@@ -37,3 +37,7 @@ export const selectCategory = shop =>
     }
     return null;
   });
+
+export const selectShowpage = createSelector([shopSelector], shop =>
+  shop.showpage ? shop.showpage : null
+);
