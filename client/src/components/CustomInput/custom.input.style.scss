@@ -26,6 +26,9 @@
         top: -11px;
         font-size: 0.6rem;
         color: $secondary_purple;
+        @include mediaMd {
+          top: 0;
+        }
       }
     }
   }
@@ -43,6 +46,9 @@
       top: -11px;
       font-size: 0.6rem;
       color: $secondary_purple;
+      @include mediaMd {
+        top: 0;
+      }
     }
   }
 }

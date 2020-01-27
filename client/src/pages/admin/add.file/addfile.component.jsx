@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Input from "../../../components/CustomInput/custom.input.component";
 import Button from "../../../components/button/button.component";
 import SelectInput from "../../../components/html.select/select.component";
+import TextArea from "../../../components/custom.textarea/custom.textarea.component";
 import axios from "axios";
 import "./add.file.style.scss";
 
@@ -188,12 +189,12 @@ export class AddFile extends Component {
             value={this.state.category}
             type="text"
           />
-          <Input
+          <TextArea
+            placeholder="Description"
             isRequired={true}
             name="description"
             onChange={event => this.handleChange(event)}
             value={this.state.description}
-            type="textarea"
           />
           <Input
             isRequired={true}

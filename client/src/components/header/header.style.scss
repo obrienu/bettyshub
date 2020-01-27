@@ -54,7 +54,7 @@
       border-bottom: solid 3px $primary_purple;
       justify-content: center;
       align-items: center;
-      z-index: 3;
+      z-index: 5;
 
       @include mediaMd {
         display: flex;

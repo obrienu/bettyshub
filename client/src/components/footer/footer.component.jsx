@@ -57,7 +57,10 @@ const Footer = () => {
         <div className="FooterTopSection">
           <li className="FooterContactInfo">Contact Info</li>
           <li className="FooterAddresses">
-            <span className="FooterIcon"></span>
+            <span className="FooterIcon">
+              <i className="fas fa-location-arrow"></i>
+            </span>
+            {"  "}
             <span className="FooterAddress">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </span>
@@ -66,10 +69,15 @@ const Footer = () => {
             <span className="FooterIcon">
               <i className="fas fa-mobile-alt"></i>
             </span>
+            {"  "}
             <span className="FooterAddress">08065288667</span>
           </li>
           <li className="FooterAddresses">
-            <span className="FooterIcon"></span>
+            <span className="FooterIcon">
+              {" "}
+              <i className="fas fa-envelope"></i>
+            </span>
+            {"  "}
             <span className="FooterAddress">lorem@gmail.com</span>
           </li>
         </div>

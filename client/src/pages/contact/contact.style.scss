@@ -1,0 +1,33 @@
+@import "../../assets/styles/config";
+.ContactContainer {
+  background: $primary_background;
+  padding: 2rem 1rem;
+
+  .Contact {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    @include mediaMd {
+      grid-template-columns: 1fr;
+    }
+
+    .ContactUs {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      @include mediaMd {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .ContactDetails {
+      @include mediaMd {
+        margin-top: 1rem;
+      }
+      .GoogleMap {
+        margin-top: 1rem;
+        height: 15rem;
+        width: 80%;
+      }
+    }
+  }
+}

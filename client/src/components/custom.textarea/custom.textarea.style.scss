@@ -1,0 +1,23 @@
+@import "../../assets/styles/config";
+
+.CustomTextArea {
+  width: 80%;
+  background-color: $primary_background;
+
+  .CustomTextAreaInput {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    color: $primary_text_color;
+    background: $primary_background;
+    display: block;
+    border-bottom: solid 1px $primary_purple;
+    padding-left: 0.5rem;
+    width: 80%;
+  }
+
+  label.CustomTextAreaLabel {
+    font-size: 0.7rem;
+    font-weight: normal;
+    pointer-events: none;
+  }
+}

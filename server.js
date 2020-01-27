@@ -22,6 +22,7 @@ mongoose
 
 app.use("/api/fabric", require("./route/fabric"));
 app.use("/api/accessories", require("./route/accessories"));
+app.use("/api/customer", require("./route/customer"));
 
 const port = process.env.PORT || 5000;
 

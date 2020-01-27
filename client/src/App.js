@@ -8,6 +8,7 @@ import AdminPage from "./pages/admin/admin.component";
 import Fabric from "./pages/fabric/fabric.component";
 import Accessories from "./pages/accessories/accessories.component";
 import ShowPage from "./pages/shop.show.page/show.page.component";
+import ContactUs from "./pages/contact/contact";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/fabric" component={Fabric} />
           <Route path="/accessories" component={Accessories} />
           <Route path="/show/:shop/:commId" component={ShowPage} />
+          <Route path="/contact" component={ContactUs} />
         </Switch>
       </div>
       <Footer />

@@ -21,7 +21,8 @@ fabricSchema.pre("save", function(next) {
   };
   this.name = upper(this.name);
   this.description =
-    this.description.substring(0).toUpperCase() + this.description.substring(1);
+    this.description.substring(0, 1).toUpperCase() +
+    this.description.substring(1);
   next();
 });
 
