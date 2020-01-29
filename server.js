@@ -5,7 +5,14 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+
+//Setup CORS
+var corsOptions = {
+  origin: "http://localhost:3000",
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 app.use(express.static("public"));
 let dbUrl;
 
@@ -16,7 +23,13 @@ if (process.env.NODE_ENV === "production") {
 }
 
 mongoose
-  .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(dbUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    poolSize: 50,
+    w: "majority",
+    wtimeout: 2500
+  })
   .then(() => console.log("APP CONNECTED TO MONGOOSE ATLAS"))
   .catch(error => console.log("CANNOT CONNECT TO MONGO ATLAS: ", error));
 

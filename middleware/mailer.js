@@ -11,7 +11,7 @@ exports.postEnquiry = async customerInfo => {
   const { name, contact, contact_details, enquiry, details } = customerInfo;
   const MailOption = {
     from: "obrientester@gmail.com", // sender address
-    to: "lizzyangel48@gmail.com", // list of receivers
+    to: "lizmyangel48@gmail.com", // list of receivers
     subject: `Bettys Hub Enquiry Notification from ${name} `, // Subject line
     html: `<body style="">
                 <div>
