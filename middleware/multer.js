@@ -33,9 +33,24 @@ const storageFabric = multer.diskStorage({
     callback(null, name + Date.now() + "." + extension);
   }
 });
+
 const storageAccessories = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, "./public/images/accessories/");
+  },
+  filename: (req, file, callback) => {
+    const name = file.originalname
+      .split(" ")
+      .join("_")
+      .substring(0, file.originalname.lastIndexOf("."));
+    const extension = MIME_TYPES[file.mimetype];
+    callback(null, name + Date.now() + "." + extension);
+  }
+});
+
+const storageRich = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "./public/images/rich/");
   },
   filename: (req, file, callback) => {
     const name = file.originalname
@@ -62,3 +77,11 @@ exports.accessories = multer({
     checkFileType(file, callback);
   }
 }).array("files");
+
+exports.rich = multer({
+  storage: storageRich,
+  limits: { fileSize: 1000000 },
+  fileFilter: (req, file, callback) => {
+    checkFileType(file, callback);
+  }
+}).single("files");

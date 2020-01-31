@@ -2,8 +2,13 @@ const express = require("express");
 const config = require("config");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const expressSanitizer = require("express-sanitizer");
+const helmet = require("helmet");
+
 const app = express();
 
+app.use(helmet());
+app.use(expressSanitizer());
 app.use(express.json());
 
 //Setup CORS
@@ -35,7 +40,9 @@ mongoose
 
 app.use("/api/fabric", require("./route/fabric"));
 app.use("/api/accessories", require("./route/accessories"));
+app.use("/api/rich", require("./route/rich"));
 app.use("/api/customer", require("./route/customer"));
+app.use("/api/checkout", require("./route/checkout"));
 
 const port = process.env.PORT || 5000;
 
