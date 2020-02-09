@@ -24,6 +24,15 @@ exports.getProduct = async (req, res) => {
   }
 };
 
+exports.getSingleProduct = async (req, res) => {
+  try {
+    const rich = await Rich.findById(req.params.id);
+    return res.json(rich);
+  } catch (err) {
+    res.status(400).json({ msg: "Cannot get rich products" });
+  }
+};
+
 exports.postProduct = async (req, res) => {
   try {
     const url = req.protocol + "://" + req.get("host");

@@ -1,5 +1,6 @@
 const Accessories = require("../model/accessories.schema");
 
+//GET ALL ACCESSORIES
 exports.getAccessories = async (req, res) => {
   const totalItems = await Accessories.find().countDocuments();
   const pipeline = [{ $sort: { createdAt: -1 } }];
@@ -14,12 +15,14 @@ exports.getAccessories = async (req, res) => {
     .catch(err => res.json({ msg: "Error getting Accessories" }));
 };
 
+//GET SINGLE ACCESSORIES
 exports.getOneAccessories = (req, res) => {
   Accessories.findById(req.params.id)
     .then(accessories => res.json(accessories))
     .catch(err => res.status(400).json({ msg: "Error Fetching Accessories" }));
 };
 
+//POST ACCESSORIES
 exports.postAccessories = (req, res, next) => {
   const { name, description, price, category } = req.body;
   const url = req.protocol + "://" + req.get("host");
@@ -39,6 +42,31 @@ exports.postAccessories = (req, res, next) => {
     .catch(err => res.status(400).json({ msg: err }));
 };
 
+// EDIT ACCESSORIES ROUTE
+exports.editAccessoreis = async (req, res) => {
+  try {
+    const body = req.body;
+    const accessories = await Accessories.findByIdAndUpdate(
+      req.params.id,
+      body
+    );
+    return res.json(accessories);
+  } catch (err) {
+    return res.status(400).json("Failed to edit commodity");
+  }
+};
+
+//DELETE ACCESSORIES ROUTE
+exports.deleteAccessories = async (req, res) => {
+  try {
+    const accessories = await Accessories.findByIdAndDelete(req.params.id);
+    return res.json("Commodity has been deleted");
+  } catch (err) {
+    return res.status(400).json("Failed to delete commodity");
+  }
+};
+
+//INACTIVE ROUTES
 exports.getCategoryList = (req, res) => {
   let pipeline = [
     {

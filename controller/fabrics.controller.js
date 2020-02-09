@@ -1,5 +1,6 @@
 const Fabric = require("../model/fabrics.schema");
 
+//GET ONE FABRIC
 exports.getFabric = async (req, res) => {
   const totalItems = await Fabric.find().countDocuments();
   const pipeline = [{ $sort: { createdAt: -1 } }];
@@ -10,15 +11,17 @@ exports.getFabric = async (req, res) => {
         totalItems
       })
     )
-    .catch(err => res.json({ msg: "Error getting Fabrics" }));
+    .catch(err => res.json("Error getting Fabrics"));
 };
 
+//GET SINGLE FABRIC
 exports.getOneFabric = (req, res) => {
   Fabric.findById(req.params.id)
     .then(fabric => res.json(fabric))
-    .catch(err => res.status(400).json({ msg: "Error Fetching Fabric" }));
+    .catch(err => res.status(400).json("Error Fetching Fabric"));
 };
 
+//POST SINGLE FABRIC
 exports.postFabric = (req, res, next) => {
   const { name, description, price, category } = req.body;
   const url = req.protocol + "://" + req.get("host");
@@ -36,6 +39,28 @@ exports.postFabric = (req, res, next) => {
     .catch(err => res.status(400).json({ msg: err }));
 };
 
+//EDIT FABRIC
+exports.editFabric = async (req, res) => {
+  try {
+    const body = req.body;
+    const fabric = await Fabric.findByIdAndUpdate(req.params.id, body);
+    return res.json(fabric);
+  } catch (err) {
+    return res.status(400).json("Failed to edit commodity");
+  }
+};
+
+//DELETE Fabric ROUTE
+exports.deleteFabric = async (req, res) => {
+  try {
+    const fabric = await Fabric.findByIdAndDelete(req.params.id);
+    return res.json("Commodity has been deleted");
+  } catch (err) {
+    return res.status(400).json("Failed to delete commodity");
+  }
+};
+
+//INACTIVE ROUTE
 exports.getCategoryList = (req, res) => {
   let pipeline = [
     {
@@ -56,7 +81,7 @@ exports.getCategoryList = (req, res) => {
 
   Fabric.aggregate(pipeline)
     .then(category => res.json(category[0].mycategory))
-    .catch(err => res.status(400).json({ msg: err }));
+    .catch(err => res.status(400).json("Cannot get category"));
 };
 
 exports.getCategory = async (req, res) => {
@@ -88,5 +113,5 @@ exports.getCategory = async (req, res) => {
     .then(fabric =>
       res.json({ fabric: [...fabric], totalItems: totalItems[0].count })
     )
-    .catch(err => res.status(400).json({ msg: "Could not fetch items" }));
+    .catch(err => res.status(400).json("Could not fetch items"));
 };

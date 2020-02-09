@@ -8,8 +8,8 @@ const helmet = require("helmet");
 const app = express();
 
 app.use(helmet());
-app.use(expressSanitizer());
 app.use(express.json());
+app.use(expressSanitizer());
 
 //Setup CORS
 var corsOptions = {
@@ -31,6 +31,7 @@ mongoose
   .connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
     poolSize: 50,
     w: "majority",
     wtimeout: 2500
@@ -43,6 +44,7 @@ app.use("/api/accessories", require("./route/accessories"));
 app.use("/api/rich", require("./route/rich"));
 app.use("/api/customer", require("./route/customer"));
 app.use("/api/checkout", require("./route/checkout"));
+app.use("/api/user", require("./route/user"));
 
 const port = process.env.PORT || 5000;
 
