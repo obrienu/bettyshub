@@ -23,20 +23,19 @@ exports.getOneFabric = (req, res) => {
 
 //POST SINGLE FABRIC
 exports.postFabric = (req, res, next) => {
-  const { name, description, price, category } = req.body;
-  const url = req.protocol + "://" + req.get("host");
+  let { name, description, price, category, imageUrl, shop } = req.body;
   const fabric = new Fabric({
     name,
     description,
     price,
     category,
-    imageUrl: req.files.map(file => url + "/images/fabric/" + file.filename)
+    imageUrl,
+    shop
   });
-
   fabric
     .save()
     .then(fabrics => res.json(fabrics))
-    .catch(err => res.status(400).json({ msg: err }));
+    .catch(err => res.status(400).json("Failed to Post Commodity"));
 };
 
 //EDIT FABRIC
@@ -44,7 +43,8 @@ exports.editFabric = async (req, res) => {
   try {
     const body = req.body;
     const fabric = await Fabric.findByIdAndUpdate(req.params.id, body);
-    return res.json(fabric);
+    const newFabric = await Fabric.findById(req.params.id);
+    return res.json(newFabric);
   } catch (err) {
     return res.status(400).json("Failed to edit commodity");
   }
@@ -60,7 +60,7 @@ exports.deleteFabric = async (req, res) => {
   }
 };
 
-//INACTIVE ROUTE
+// GET LIST OF CATEGORY ROUTES
 exports.getCategoryList = (req, res) => {
   let pipeline = [
     {
@@ -84,6 +84,60 @@ exports.getCategoryList = (req, res) => {
     .catch(err => res.status(400).json("Cannot get category"));
 };
 
+// GET SEARCH LIST
+
+exports.getSearchList = async (req, res) => {
+  try {
+    let { category, name, limit, page } = req.query;
+    limit = parseInt(limit);
+    skip = (parseInt(page) - 1) * parseInt(limit);
+    let match;
+    let searchName = new RegExp(name, "i");
+    if (category && name) {
+      match = {
+        $match: {
+          category,
+          name: searchName
+        }
+      };
+    } else if (name && !category) {
+      match = {
+        $match: {
+          name: searchName
+        }
+      };
+    } else if (!name && category) {
+      match = {
+        $match: {
+          category
+        }
+      };
+    } else {
+      match = {
+        $match: {}
+      };
+    }
+    const countItems = await Fabric.aggregate([
+      match,
+      { $count: "count" },
+      { $project: { count: 1 } }
+    ]);
+    const items = await Fabric.aggregate([
+      match,
+      { $skip: skip },
+      { $limit: limit },
+      { $sort: { createdAt: -1 } }
+    ]);
+    return res.json({
+      items: items,
+      totalItems: !countItems[0] ? 0 : countItems[0].count
+    });
+  } catch (err) {
+    return res.status(400).json(err.message);
+  }
+};
+
+//INACTIVE ROUTE
 exports.getCategory = async (req, res) => {
   const category = req.params.category || "all";
   const offset = req.params.offset || 0;

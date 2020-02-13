@@ -59,7 +59,7 @@ exports.registerUser = (req, res) => {
               );
             });
           })
-          .catch(err => res.status(400).json("error registering user"));
+          .catch(err => res.status(400).json("Error Registering User"));
       } catch (err) {
         res.status(400).json("Server Error, Please Try Again");
       }

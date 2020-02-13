@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const richSchema = mongoose.Schema({
   name: { type: String, required: true },
+  shop: { type: String, required: true },
   text: { type: String, required: true },
   price: { type: Number, required: true },
   imageUrl: { type: String, required: true },

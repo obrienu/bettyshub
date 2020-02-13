@@ -24,22 +24,21 @@ exports.getOneAccessories = (req, res) => {
 
 //POST ACCESSORIES
 exports.postAccessories = (req, res, next) => {
-  const { name, description, price, category } = req.body;
-  const url = req.protocol + "://" + req.get("host");
+  const { name, description, price, category, imageUrl, shop } = req.body;
+  //const url = req.protocol + "://" + req.get("host");
   const accessories = new Accessories({
     name,
     description,
     price,
     category,
-    imageUrl: req.files.map(
-      file => url + "/images/accessories/" + file.filename
-    )
+    imageUrl,
+    shop
   });
 
   accessories
     .save()
     .then(accessories => res.json(accessories))
-    .catch(err => res.status(400).json({ msg: err }));
+    .catch(err => res.status(400).json("Failed to Post Commodity"));
 };
 
 // EDIT ACCESSORIES ROUTE
@@ -66,7 +65,8 @@ exports.deleteAccessories = async (req, res) => {
   }
 };
 
-//INACTIVE ROUTES
+//GET LIST OF CATEGORIES
+
 exports.getCategoryList = (req, res) => {
   let pipeline = [
     {
@@ -89,6 +89,61 @@ exports.getCategoryList = (req, res) => {
     .then(categories => res.json(categories[0].mycategory))
     .catch(err => res.status(400).json({ msg: err }));
 };
+
+// GET SEARCH LIST
+
+exports.getSearchList = async (req, res) => {
+  try {
+    let { category, name, limit, page } = req.query;
+    limit = parseInt(limit);
+    skip = (parseInt(page) - 1) * parseInt(limit);
+    let match;
+    let searchName = new RegExp(name, "i");
+    if (category && name) {
+      match = {
+        $match: {
+          category,
+          name: searchName
+        }
+      };
+    } else if (name && !category) {
+      match = {
+        $match: {
+          name: searchName
+        }
+      };
+    } else if (!name && category) {
+      match = {
+        $match: {
+          category
+        }
+      };
+    } else {
+      match = {
+        $match: {}
+      };
+    }
+    const countItems = await Accessories.aggregate([
+      match,
+      { $count: "count" },
+      { $project: { count: 1 } }
+    ]);
+    const items = await Accessories.aggregate([
+      match,
+      { $skip: skip },
+      { $limit: limit },
+      { $sort: { createdAt: -1 } }
+    ]);
+    return res.json({
+      items: items,
+      totalItems: !countItems[0] ? 0 : countItems[0].count
+    });
+  } catch (err) {
+    return res.status(400).json(err.message);
+  }
+};
+
+//INACTIVE ROUTES
 
 exports.getCategory = async (req, res) => {
   const category = req.params.category || "all";
