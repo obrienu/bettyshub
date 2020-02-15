@@ -13,7 +13,7 @@ app.use(helmet());
 app.use(expressSanitizer());
 
 //Setup CORS
-var whitelist = ["http://localhost:5000/", "http://example2.com"];
+/* var whitelist = ["http://localhost:5000/", "http://example2.com"];
 var corsOptions = {
   origin: function(origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -22,7 +22,7 @@ var corsOptions = {
       callback(new Error("Not allowed by CORS"));
     }
   }
-};
+}; */
 
 app.use(cors());
 app.use(express.static("public"));
